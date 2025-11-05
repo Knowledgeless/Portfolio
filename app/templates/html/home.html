@@ -34,6 +34,59 @@
 </section>
 
 
+<section class="services-section py-3">
+  <div class="container-fluid d-flex align-items-center">
+    <div class="services-label px-5">
+      <h4 class="mb-0 text-uppercase fw-bold">Services</h4>
+    </div>
+    <div class="services-marquee">
+      <div class="marquee-content">
+        {% for service in services %}
+          <span>{{ service }}</span>
+          {% if not forloop.last %}<span> | </span>{% endif %}
+        {% endfor %}
+        {% for service in services %}
+          <span>{{ service }}</span>
+          {% if not forloop.last %}<span> | </span>{% endif %}
+        {% endfor %}  
+        
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<section class="career-path py-5">
+  <div class="container position-relative">
+    <h2 class="text-center mb-5 text-uppercase fw-bold text-fspecial">Career Path</h2>
+
+    <div class="timeline position-relative">
+      <div class="timeline-line"></div> <!-- Move this ABOVE the loop -->
+
+      {% for step in career_steps %}
+      <div class="timeline-item {% cycle 'left' 'right' %}">
+        <div class="timeline-dot"></div>
+        <div class="timeline-connector"></div>
+        <div class="timeline-box shadow-sm p-3">
+          <span class="year">{{ step.year }}</span>
+          <h5 class="fw-bold mt-2">{{ step.title }}</h5>
+          <p class="mb-0">{{ step.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+
+
+
 
 <script src="{% static 'js/home.js' %}"></script>
 {% endblock content %}

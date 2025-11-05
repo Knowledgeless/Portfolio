@@ -53,3 +53,174 @@
 @keyframes blink {
   50% { opacity: 0; }
 }
+ 
+/* INFO: services marquee  */
+
+.services-section {
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  position: relative;
+}
+
+.services-label {
+  color: var(--fspecial);
+  font-family: var(--ftext);
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.services-marquee {
+  overflow: hidden;
+  position: relative;
+  flex: 1;
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 40s linear infinite;
+  font-family: var(--ftext);
+  font-size: 1rem;
+  color: var(--secondary);
+}
+
+.marquee-content span {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+
+/* career path starts here  */
+
+.career-path {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Main vertical line */
+.timeline-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 100%;
+  background-color: var(--fspecial);
+  z-index: 1; /* keep behind dots and boxes */
+  pointer-events: none;
+}
+
+/* Each item container */
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 60px 10%;
+  z-index: 2;
+}
+
+/* Alternating sides */
+.timeline-item.left .timeline-box {
+  order: 1;
+  text-align: right;
+}
+
+.timeline-item.left .timeline-connector {
+  order: 2;
+  margin-left: auto;
+}
+
+.timeline-item.right .timeline-box {
+  order: 2;
+  text-align: left;
+}
+
+.timeline-item.right .timeline-connector {
+  order: 1;
+  margin-right: auto;
+}
+
+/* Dots on the central line */
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background-color: var(--fspecial);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(123, 255, 0, 0.6);
+  z-index: 3;
+}
+
+/* Horizontal connector */
+.timeline-connector {
+  flex: 0 0 50px;
+  height: 2px;
+  background-color: var(--fspecial);
+  z-index: 2;
+}
+
+/* Timeline boxes */
+.timeline-box {
+  width: 40%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  color: var(--secondary);
+  padding: 20px;
+  transition: transform 0.3s ease;
+  z-index: 3;
+}
+
+.timeline-box:hover {
+  transform: translateY(-5px);
+}
+
+.timeline-box .year {
+  font-size: 0.85rem;
+  color: var(--fspecial);
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+  .timeline-line {
+    left: 10px;
+    transform: none;
+  }
+
+  .timeline-item {
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 30px 0;
+  }
+
+  .timeline-dot {
+    left: 10px;
+    transform: none;
+  }
+
+  .timeline-connector {
+    width: 25px;
+  }
+
+  .timeline-box {
+    width: 80%;
+    margin-left: 40px;
+    text-align: left;
+  }
+}
+
