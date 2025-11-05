@@ -22,6 +22,7 @@
 
 
     <link rel="stylesheet" href="{% static "css/base.css" %}">
+    <link rel="stylesheet" href="{% static "css/media.css" %}">
 
     {% comment %} INFO: Inner CSS  {% endcomment %}
 
@@ -33,7 +34,7 @@
     {% comment %} ! Navbar {% endcomment %}
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand logo" href="/"> <i class="fa-solid fa-meteor"></i> Nazmul</a>
+            <a class="navbar-brand logo" href="/"> <i class="fa-solid fa-meteor"></i> Nazmul Hossain</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"  data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
@@ -41,22 +42,22 @@
                 </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav m-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a>
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/"><i class="fa-solid fa-house"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/graphics/' %}active{% endif %}" href="/graphics/">Graphics</a>
+                        <a class="nav-link {% if request.path == '/graphics/' %}active{% endif %}" href="/graphics/"><i class="fa-solid fa-paintbrush"></i> Graphics</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/projects/' %}active{% endif %}" href="/projects/">Projects</a>
+                        <a class="nav-link {% if request.path == '/projects/' %}active{% endif %}" href="/projects/"><i class="fa-solid fa-code"></i> Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/contact/' %}active{% endif %}" href="/contact/">Contact</a>
+                        <a class="nav-link {% if request.path == '/contact/' %}active{% endif %}" href="/contact/"><i class="fa-solid fa-phone-volume"></i> Contact</a>
                     </li>
 
                 </ul>
-                <button class="btn btn-warning cv">GET CV <i class="fa-solid fa-download"></i></button>
+                <button class="btn cv">GET CV <i class="fa-solid fa-download"></i></button>
             </div>
         </div>
     </nav>

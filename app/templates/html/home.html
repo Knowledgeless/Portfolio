@@ -1,6 +1,39 @@
 {% extends "html/base.html" %}
 {% load static %}
 
-{% block title %}Portfolio - Home{% endblock title %}
+{% block title %}Nazmul - Portfolio{% endblock title %}
 
-{% block content %}{% endblock content %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock link %}
+
+{% block content %}
+
+
+<section class="banner-section" style="background-image: url('{% static 'images/banner.jpg' %}');">
+  <div class="banner-overlay"></div>
+  <div class="container-fluid h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-md-6"></div>
+      <div class="col-md-6 banner-content text-white">
+        <h1>Hi, I'm <span class="text-fspecial">Nazmul Hossain</span></h1>
+        <p class="lead">A Passionate <span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
+        <div class="d-flex flex-wrap gap-4 mt-4 stats justify-content-center justify-content-md-start">
+          <div>
+            <h2 class="fw-bold text-fspecial">10+</h2>
+            <p>Projects Completed</p>
+          </div>
+          <div>
+            <h2 class="fw-bold text-fspecial">4</h2>
+            <p>Satisfied Clients</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock content %}
