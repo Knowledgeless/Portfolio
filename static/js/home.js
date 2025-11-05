@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const textEl = document.querySelector(".typed-text");
   const cursor = document.querySelector(".cursor");
-  const words = ["Web Developer", "Graphics Designer"];
+  const words = ["Web Developer", "Graphics Designer", "Python Programmer"];
   let i = 0, j = 0, isDeleting = false;
 
   function type() {
