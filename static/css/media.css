@@ -46,16 +46,46 @@
     }
 
     /* marquee */
-    .services-label h4 {
-        font-size: 1rem;
+    .services-label, .services-label h4{
+        font-size: 18px;
+        padding: 3px 7px 0 0!important;
     }
-    .marquee-content span {
-        font-size: 0.9rem;
-        margin: 0 15px;
+
+    /* INFO: career path starts here  */
+    .timeline-item.left { 
+        flex-direction: row; 
     }
-    .marquee-track {
-        animation-duration: 40s;
+
+    .timeline-line {
+        left: 20px;
+        transform: none;
     }
+
+    .timeline-item {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin: 40px 0;
+    }
+
+    .timeline-dot {
+        left: 20px;
+        top: 0;
+        transform: translate(-50%, 0);
+    }
+
+    /* Remove connector on mobile */
+    .timeline-connector {
+        display: none;
+    }
+
+    .timeline-box {
+        width: 80%;
+        margin-left: 20px;
+        text-align: left;
+    }
+    
+
 }
 
 
@@ -93,7 +123,47 @@
         background-position: center;
         background-size: cover;
     }
-    
+
+    /* INFO: marquee starts here  */
+    .services-label, .services-label h4{
+        font-size: 18px;
+        padding: 3px 7px 0 0!important;
+    }
+
+    /* INFO: career path starts here  */
+    .timeline-item.left { 
+        flex-direction: row; 
+    }
+
+    .timeline-line {
+        left: 20px;
+        transform: none;
+    }
+
+    .timeline-item {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin: 40px 0;
+    }
+
+    .timeline-dot {
+        left: 20px;
+        top: 0;
+        transform: translate(-50%, 0);
+    }
+
+    /* Remove connector on mobile */
+    .timeline-connector {
+        display: none;
+    }
+
+    .timeline-box {
+        width: 80%;
+        margin-left: 20px;
+        text-align: left;
+    }
+
 }
 
 /* large */

@@ -79,27 +79,43 @@
 }
 
 .marquee-content {
-  display: inline-block;
+  display: flex;
+  width: max-content;
   white-space: nowrap;
-  animation: marquee 40s linear infinite;
+  animation: marquee 25s linear infinite;
   font-family: var(--ftext);
   font-size: 1rem;
   color: var(--secondary);
 }
 
 .marquee-content span {
-  display: inline-block;
   margin: 0 10px;
+  transition: color 0.3s ease; /* smooth color change */
 }
 
+.services-marquee:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+.marquee-content span:hover {
+  color: var(--fspecial);
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+/* Smooth, infinite scroll loop without visible start or end */
 @keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 
-/* career path starts here  */
 
+/* INFO: career path starts here  */
 .career-path {
   background-color: rgba(255, 255, 255, 0.03);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -109,7 +125,7 @@
   overflow: hidden;
 }
 
-/* Main vertical line */
+/* === Main vertical line === */
 .timeline-line {
   position: absolute;
   top: 0;
@@ -118,63 +134,57 @@
   width: 3px;
   height: 100%;
   background-color: var(--fspecial);
-  z-index: 1; /* keep behind dots and boxes */
-  pointer-events: none;
+  z-index: 1;
 }
 
-/* Each item container */
+/* === Each item container === */
 .timeline-item {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 60px 10%;
+  margin: 70px 0;
   z-index: 2;
 }
 
-/* Alternating sides */
-.timeline-item.left .timeline-box {
-  order: 1;
-  text-align: right;
-}
-
-.timeline-item.left .timeline-connector {
-  order: 2;
-  margin-left: auto;
-}
-
-.timeline-item.right .timeline-box {
-  order: 2;
-  text-align: left;
-}
-
-.timeline-item.right .timeline-connector {
-  order: 1;
-  margin-right: auto;
-}
-
-/* Dots on the central line */
+/* === Dots === */
 .timeline-dot {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  width: 16px;
-  height: 16px;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
   background-color: var(--fspecial);
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(123, 255, 0, 0.6);
   z-index: 3;
+  top: 50%;
 }
 
-/* Horizontal connector */
+/* === Horizontal connector (only from circle to box) === */
 .timeline-connector {
-  flex: 0 0 50px;
+  position: absolute;
+  top: 50%;
   height: 2px;
   background-color: var(--fspecial);
-  z-index: 2;
+  z-index: 0;
 }
 
-/* Timeline boxes */
+/* Connector for right-side box */
+.timeline-item.left .timeline-connector {
+  left: 50%;
+  width: calc(10% - 20px); /* 40% box width minus small gap */
+  transform: translateY(-50%);
+}
+
+/* Connector for left-side box */
+.timeline-item.right .timeline-connector {
+  right: 50%;
+  width: calc(10% - 20px);
+  transform: translateY(-50%);
+}
+
+/* === Timeline boxes === */
 .timeline-box {
   width: 40%;
   background: rgba(255, 255, 255, 0.05);
@@ -195,32 +205,81 @@
   letter-spacing: 1px;
 }
 
-/* Responsive */
-@media (max-width: 767.98px) {
-  .timeline-line {
-    left: 10px;
-    transform: none;
-  }
-
-  .timeline-item {
-    flex-direction: row;
-    justify-content: flex-start;
-    margin: 30px 0;
-  }
-
-  .timeline-dot {
-    left: 10px;
-    transform: none;
-  }
-
-  .timeline-connector {
-    width: 25px;
-  }
-
-  .timeline-box {
-    width: 80%;
-    margin-left: 40px;
-    text-align: left;
-  }
+/* === Alternating sides === */
+.timeline-item.left {
+  flex-direction: row-reverse;
 }
 
+.timeline-item.left .timeline-box {
+  text-align: right;
+  margin-right: 20px;
+}
+
+.timeline-item.right .timeline-box {
+  text-align: left;
+  margin-left: 20px;
+}
+
+
+/*  */
+
+.skills-section{ background: var(--bg); color: var(--muted); }
+.skills-wrap{ max-width: 1100px; width: 100%; }
+.skills-title{ color: var(--accent); font-family: var(--ftext, system-ui); }
+
+.orbit-scene{
+  width: 520px;
+  height: 520px;
+  position: relative;
+}
+
+.center-badge{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+  display: flex;
+  z-index: 5;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+.center-text{ color: var(--accent); font-weight: 700; }
+
+/* Orbit base styles: transparent paths, only icons visible */
+.orbit{ position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 50%; }
+.orbit .orb-item{ position: absolute; left: 50%; top: 50%; transform-origin: center center; }
+.orbit .orb-item img{ width: 56px; height: 56px; object-fit: contain; display: block; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6)); transition: transform 0.25s ease, filter 0.25s ease; }
+.orbit .orb-item img:hover{ transform: scale(1.12); filter: drop-shadow(0 6px 18px rgba(91,224,74,0.45)); }
+
+/* orbit sizes and animation durations */
+.orbit-1{ width: 340px; height: 340px; animation: spin 18s linear infinite; z-index: 2; }
+.orbit-2{ width: 420px; height: 420px; animation: spin 28s linear infinite reverse; z-index: 2; }
+.orbit-3{ width: 500px; height: 500px; animation: spin 36s linear infinite; z-index: 1; }
+.orbit-4{ width: 220px; height: 220px; animation: spin 14s linear infinite reverse; z-index: 3; }
+
+/* place items around each orbit evenly (3 items per orbit shown here)
+   using nth-child to rotate them at different angles */
+.orbit-1 .orb-item:nth-child(1){ transform: rotate(0deg) translate(0, -170px) rotate(0deg); }
+.orbit-1 .orb-item:nth-child(2){ transform: rotate(120deg) translate(0, -170px) rotate(-120deg); }
+.orbit-1 .orb-item:nth-child(3){ transform: rotate(240deg) translate(0, -170px) rotate(-240deg); }
+
+.orbit-2 .orb-item:nth-child(1){ transform: rotate(0deg) translate(0, -210px) rotate(0deg); }
+.orbit-2 .orb-item:nth-child(2){ transform: rotate(120deg) translate(0, -210px) rotate(-120deg); }
+.orbit-2 .orb-item:nth-child(3){ transform: rotate(240deg) translate(0, -210px) rotate(-240deg); }
+
+.orbit-3 .orb-item:nth-child(1){ transform: rotate(0deg) translate(0, -250px) rotate(0deg); }
+.orbit-3 .orb-item:nth-child(2){ transform: rotate(90deg) translate(0, -250px) rotate(-90deg); }
+.orbit-3 .orb-item:nth-child(3){ transform: rotate(180deg) translate(0, -250px) rotate(-180deg); }
+
+.orbit-4 .orb-item:nth-child(1){ transform: rotate(0deg) translate(0, -110px) rotate(0deg); }
+.orbit-4 .orb-item:nth-child(2){ transform: rotate(120deg) translate(0, -110px) rotate(-120deg); }
+.orbit-4 .orb-item:nth-child(3){ transform: rotate(240deg) translate(0, -110px) rotate(-240deg); }
+
+/* spinning animation (spin the parent orbit, children stay upright due to counter-rotate in transforms above) */
+@keyframes spin{ from{ transform: translate(-50%, -50%) rotate(0deg); } to{ transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* pause orbit on hover of the image */
+.orbit .orb-item img:hover{ animation-play-state: paused; }

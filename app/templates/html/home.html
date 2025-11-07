@@ -5,6 +5,7 @@
 
 {% block link %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/media.css' %}">
 {% endblock link %}
 
 {% block content %}
@@ -45,15 +46,55 @@
           <span>{{ service }}</span>
           {% if not forloop.last %}<span> | </span>{% endif %}
         {% endfor %}
+        <span> | </span>
         {% for service in services %}
           <span>{{ service }}</span>
           {% if not forloop.last %}<span> | </span>{% endif %}
-        {% endfor %}  
-        
+        {% endfor %}
       </div>
-
     </div>
   </div>
+</section>
+
+
+  <!-- INFO: Skills Section  -->
+
+  <section class="skills-section d-flex align-items-center justify-content-center py-5">
+      <div class="skills-wrap text-center position-relative">
+        <h2 class="skills-title text-uppercase fw-bold mb-4">Skills I Have</h2>
+
+        <div class="orbit-scene position-relative mx-auto">
+          <!-- Orbit layers (transparent) -->
+          <div class="orbit orbit-1">
+            <div class="orb-item"><img src="{% static 'images/illustrator.png' %}" alt="Illustrator"></div>
+            <div class="orb-item"><img src="{% static 'images/photoshop.png' %}" alt="Photoshop"></div>
+            <div class="orb-item"><img src="{% static 'images/figma.png' %}" alt="Figma"></div>
+          </div>
+
+          <div class="orbit orbit-2">
+            <div class="orb-item"><img src="{% static 'images/vscode.png' %}" alt="VS Code"></div>
+            <div class="orb-item"><img src="{% static 'images/atom.png' %}" alt="Atom"></div>
+            <div class="orb-item"><img src="{% static 'images/html.png' %}" alt="html"></div>
+            
+            
+          </div>
+
+          <div class="orbit orbit-3">
+            <div class="orb-item"><img src="{% static 'images/git.png' %}" alt="Git"></div>
+            <div class="orb-item"><img src="{% static 'images/github.png' %}" alt="GitHub"></div>
+            <div class="orb-item"><img src="{% static 'images/css.png' %}" alt="CSS"></div>
+            x
+          </div>
+
+
+          <!-- Center badge (optional) -->
+          <div class="center-badge d-flex align-items-center justify-content-center">
+            <span class="center-text">Tools I Know</span>
+          </div>
+        </div>
+
+        <p class="mt-4 small text-muted">Hover any logo to pause its orbit and highlight it.</p>
+      </div>
 </section>
 
 

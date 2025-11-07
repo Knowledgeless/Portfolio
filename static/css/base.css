@@ -6,6 +6,12 @@
   --primary: black;
   --secondary: white;
   --fspecial: rgb(123, 255, 0);
+  
+  /* INFO: skill purpose */
+  --bg: #0b0f17;
+  --card: rgba(255,255,255,0.04);
+  --accent: var(--fspecial, #5be04a);
+  --muted: rgba(255,255,255,0.7);
 }
 
 *{
